@@ -6,6 +6,7 @@
   "repository": "https://github.com/alexanderchan/eslint-config",
   "license": "MIT",
   "private": false,
+  "prettier": "@alexmchan/prettier-config",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.9.1",
@@ -21,5 +22,9 @@
   "peerDependencies": {
     "eslint": "^7.15.0",
     "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "@alexmchan/prettier-config": "^1.0.1",
+    "eslint": "^7.15.0"
   }
 }

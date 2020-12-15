@@ -13,3 +13,7 @@ module.exports = {
   extends: ['@alexmchan/eslint-config'],
 }
 ```
+
+## Also see
+
+https://github.com/alexanderchan/prettier-config
