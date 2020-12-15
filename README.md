@@ -1,6 +1,6 @@
 # Introduction
 
-A preset of eslint config.
+A preset of [eslint config](./src/index.js).
 
 ## Installation
 
