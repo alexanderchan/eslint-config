@@ -1,9 +1,10 @@
 {
-  "name": "@alexanderchan/eslint-config",
+  "name": "@alexmchan/eslint-config",
   "version": "1.0.4",
   "main": "src/index.js",
-  "author": "Alex Chan <achan@godaddy.com>",
+  "author": "Alex Chan <alexander.m.chan@gmail.com>",
   "license": "MIT",
+  "private": false,
   "dependencies": {
     "@typescript-eslint/parser": "^4.9.1",
     "eslint-config-prettier": "^7.0.0",
