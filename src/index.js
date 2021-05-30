@@ -6,17 +6,14 @@ module.exports = {
     'import',
     'simple-import-sort',
   ],
-
   parser: '@typescript-eslint/parser',
-
   extends: [
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'plugin:prettier/recommended',
+    'plugin:react/recommended',
   ],
-
   env: { es6: true },
-
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -24,69 +21,30 @@ module.exports = {
     },
     sourceType: 'module',
   },
-
-  settings: {
-    react: {
-      pragma: 'React',
-      version: 'detect',
-    },
-  },
-
   rules: {
-    // imports
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     'sort-imports': 'off',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
-
-    // react
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/no-children-prop': 0,
-    'react/display-name': 0,
-    'react/prop-types': 0,
-    'react/jsx-no-literals': 1,
-    'react/self-closing-comp': 'error',
-    'react/no-unescaped-entities': [
-      'error',
-      {
-        forbid: [
-          {
-            char: '>',
-            alternatives: ['&gt;'],
-          },
-          {
-            char: '"',
-            alternatives: ['&quot;', '&ldquo;', '&#34;', '&rdquo;'],
-          },
-          {
-            char: '}',
-            alternatives: ['&#125;'],
-          },
-        ],
-      },
-    ],
-
-    // dev/test logging and comments
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-only-tests/no-only-tests': 'error',
     'no-debugger': 'error',
-    'no-warning-comments': [
-      'error',
-      { terms: ['fixme'], location: 'anywhere' },
-    ],
-
-    // typescript
+    // disable the base rule as it can report incorrect errors
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-function.md#rule-changes
+    'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'warn',
     '@typescript-eslint/ban-ts-comment': 'warn',
+
     '@typescript-eslint/ban-types': 'warn',
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
-
     // change to warning until we can resolve to make similar to old @typescript-eslint/camelcase
     // this is similar but errors out a lot more cases such as Cell or ReactComponents returned from functions
     '@typescript-eslint/naming-convention': [
@@ -113,9 +71,38 @@ module.exports = {
       },
     ],
 
-    // disable the base rule as it can report incorrect errors
-    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-function.md#rule-changes
-    'no-empty-function': 'off',
+    // "@typescript-eslint/naming-convention": [
+    //     "warn",
+    //     { "selector": "variableLike", "format": ["camelCase"] }
+    //   ],
+    'no-warning-comments': [
+      'error',
+      { terms: ['fixme'], location: 'anywhere' },
+    ],
+    'react/no-children-prop': 0,
+    'react/display-name': 0,
+    'react/prop-types': 0,
+    'react/jsx-no-literals': 1,
+    'react/self-closing-comp': 'error',
+    'react/no-unescaped-entities': [
+      'error',
+      {
+        forbid: [
+          {
+            char: '>',
+            alternatives: ['&gt;'],
+          },
+          {
+            char: '"',
+            alternatives: ['&quot;', '&ldquo;', '&#34;', '&rdquo;'],
+          },
+          {
+            char: '}',
+            alternatives: ['&#125;'],
+          },
+        ],
+      },
+    ],
   },
 
   overrides: [
@@ -131,7 +118,7 @@ module.exports = {
         // import sorts see
         // https://github.com/lydell/eslint-plugin-simple-import-sort/
         // https://github.com/lydell/eslint-plugin-simple-import-sort/blob/master/examples/.eslintrc.js
-        'simple-import-sort/sort': [
+        'simple-import-sort/imports': [
           'error',
           {
             groups: [
@@ -168,4 +155,10 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+  },
 }
