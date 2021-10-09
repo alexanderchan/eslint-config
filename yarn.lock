@@ -5,9 +5,9 @@ __metadata:
   version: 4
   cacheKey: 8
 
-"@alexmchan/eslint-config-mwc@workspace:.":
+"@alexmchan/eslint-config@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@alexmchan/eslint-config-mwc@workspace:."
+  resolution: "@alexmchan/eslint-config@workspace:."
   dependencies:
     "@typescript-eslint/parser": ^4.33.0
     eslint: ^8.0.0
