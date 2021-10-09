@@ -1,5 +1,7 @@
 ## Installation
 
+1. yarn add -D '
+
 1. (optional) List the peer dependencies in case they've changed
 
 ```sh
@@ -24,6 +26,6 @@ module.exports = {
       },
     },
   ],
-  extends: ['@gdcorp-partners/eslint-config-mwc'],
+  extends: ['@alexmchan/eslint-config'],
 }
 ```
