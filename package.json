@@ -1,5 +1,5 @@
 {
-  "name": "@alexmchan/eslint-config-mwc",
+  "name": "@alexmchan/eslint-config",
   "version": "2.4.0",
   "main": "src/index.js",
   "author": "Alex Chan <alex@alexmchan.com>",
