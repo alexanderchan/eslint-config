@@ -1,4 +1,12 @@
 module.exports = {
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'], // Your TypeScript files extension
+      parserOptions: {
+        project: ['./tsconfig.json'], // Specify it only for TypeScript files
+      },
+    },
+  ],
   plugins: [
     'react-hooks',
     'no-only-tests',
@@ -66,7 +74,20 @@ module.exports = {
         // },
       },
       {
+        selector: ['objectLiteralMethod'],
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+      },
+      {
         selector: ['function'],
+        format: ['camelCase', 'PascalCase'],
+      },
+      {
+        selector: ['variable'],
+        format: ['camelCase', 'PascalCase'],
+        types: ['function'],
+      },
+      {
+        selector: ['typeLike'],
         format: ['camelCase', 'PascalCase'],
       },
     ],

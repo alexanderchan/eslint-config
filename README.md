@@ -1,19 +1,29 @@
-# Introduction
-
-A preset of [eslint config](./src/index.js).
-
 ## Installation
 
-1. `yarn add -D @alexmchan/eslint-config`
+1. (optional) List the peer dependencies in case they've changed
 
-2. Add to the `.eslintrc.js`
+```sh
+npm view @alexmchan/eslint-config peerDependencies --json | xargs -0 node -e "console.log(Object.keys(JSON.parse(process.argv[1])).join(' '))"
+```
+
+2. Install with dependencies
+
+```sh
+yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-import eslint-plugin-no-only-tests eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-simple-import-sort
+```
+
+3. Add to the `.eslintrc.js`
 
 ```js
 module.exports = {
-  extends: ['@alexmchan/eslint-config'],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+    },
+  ],
+  extends: ['@gdcorp-partners/eslint-config-mwc'],
 }
 ```
-
-## Also see
-
-https://github.com/alexanderchan/prettier-config
