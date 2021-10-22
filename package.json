@@ -1,6 +1,6 @@
 {
   "name": "@alexmchan/eslint-config",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "main": "src/index.js",
   "author": "Alex Chan <alex@alexmchan.com>",
   "repository": "https://github.com/alexanderchan/eslint-config",
