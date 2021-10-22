@@ -1,6 +1,6 @@
 ## Installation
 
-1. yarn add -D '
+1. yarn add -D '@alexmchan/eslint-config'
 
 1. (optional) List the peer dependencies in case they've changed
 
@@ -27,5 +27,11 @@ module.exports = {
     },
   ],
   extends: ['@alexmchan/eslint-config'],
+  rules: {
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/no-unescaped-entities': 'warn',
+    'no-console': 'warn',
+  },
 }
 ```
