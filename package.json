@@ -34,7 +34,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "eslint ."
+    "test": "eslint .",
+    "publish-packages": "changeset version && changeset publish"
   },
   "packageManager": "yarn@3.2.4"
 }
