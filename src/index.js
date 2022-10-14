@@ -6,6 +6,52 @@ module.exports = {
         project: ['./tsconfig.json'], // Specify it only for TypeScript files
       },
     },
+    {
+      files: ['*.stories.ts?'],
+      rules: {
+        'no-console': 'off',
+      },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        // import sorts see
+        // https://github.com/lydell/eslint-plugin-simple-import-sort/
+        // https://github.com/lydell/eslint-plugin-simple-import-sort/blob/master/examples/.eslintrc.js
+        'simple-import-sort/imports': [
+          'error',
+          {
+            groups: [
+              // Packages. `react` related packages come first.
+              // if we had more than one array, each array is separated
+              // by a space
+              [
+                '^react',
+                // 3rd party
+                '^@?\\w',
+                // styleguide
+                '^styleguide',
+                // graphql
+                '^__generated__.*',
+                'app/graphql.*',
+                '^app/.*',
+                // // Side effect imports.
+                '^\\u0000',
+                // Parent imports. Put `..` last.
+                '^\\.\\.(?!/?$)',
+                '^\\.\\./?$',
+                // Other relative imports. Put same-folder imports and `.` last.
+                '^\\./(?=.*/)(?!/?$)',
+                '^\\.(?!/?$)',
+                '^\\./?$',
+                // Style imports.
+                '^.+\\.s?css$',
+              ],
+            ],
+          },
+        ],
+      },
+    },
   ],
   plugins: [
     'react-hooks',
@@ -55,42 +101,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     // change to warning until we can resolve to make similar to old @typescript-eslint/camelcase
     // this is similar but errors out a lot more cases such as Cell or ReactComponents returned from functions
-    '@typescript-eslint/naming-convention': [
-      'warn',
-      {
-        selector: 'default',
-        format: ['camelCase'],
-        leadingUnderscore: 'allow',
-        trailingUnderscore: 'allow',
-      },
-      {
-        selector: ['property', 'parameterProperty', 'method', 'accessor'],
-        format: ['camelCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow',
-        // filter: {
-        //   // you can expand this regex as you find more cases that require quoting that you want to allow
-        //   regex: "[_-]",
-        //   match: false,
-        // },
-      },
-      {
-        selector: ['objectLiteralMethod'],
-        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
-      },
-      {
-        selector: ['function'],
-        format: ['camelCase', 'PascalCase'],
-      },
-      {
-        selector: ['variable'],
-        format: ['camelCase', 'PascalCase'],
-        types: ['function'],
-      },
-      {
-        selector: ['typeLike'],
-        format: ['camelCase', 'PascalCase'],
-      },
-    ],
+    // import sorts see
 
     // "@typescript-eslint/naming-convention": [
     //     "warn",
@@ -125,57 +136,6 @@ module.exports = {
       },
     ],
   },
-
-  overrides: [
-    {
-      files: ['*.stories.ts?'],
-      rules: {
-        'no-console': 'off',
-      },
-    },
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        // import sorts see
-        // https://github.com/lydell/eslint-plugin-simple-import-sort/
-        // https://github.com/lydell/eslint-plugin-simple-import-sort/blob/master/examples/.eslintrc.js
-        'simple-import-sort/imports': [
-          'error',
-          {
-            groups: [
-              // Packages. `react` related packages come first.
-              // if we had more than one array, each array is separated
-              // by a space
-              [
-                '^react',
-                // 3rd party
-                '^@?\\w',
-                // Kodiak
-                '^@kodiak-ui(.*)',
-                // styleguide
-                '^styleguide',
-                // graphql
-                '^__generated__.*',
-                'app/graphql.*',
-                '^app/.*',
-                // // Side effect imports.
-                '^\\u0000',
-                // Parent imports. Put `..` last.
-                '^\\.\\.(?!/?$)',
-                '^\\.\\./?$',
-                // Other relative imports. Put same-folder imports and `.` last.
-                '^\\./(?=.*/)(?!/?$)',
-                '^\\.(?!/?$)',
-                '^\\./?$',
-                // Style imports.
-                '^.+\\.s?css$',
-              ],
-            ],
-          },
-        ],
-      },
-    },
-  ],
   settings: {
     react: {
       pragma: 'React',
